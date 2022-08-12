@@ -75,23 +75,21 @@ const person = {
     name: "erik",
     walk: () => {
         // arrow function has no this context
+        console.log(this); // this refers to outer object (Window object)
         console.log(this.name, "is walking")
     },
     flip: function () {
         // function does have a this context
+        console.log(this); // this refers to the person object
         console.log(this.name, "is flipping")
     }
 }
 
 // // console.log(person)
 
-// const dothewalk = person.walk;
+person.walk();
+person.flip();
 
-// dothewalk();
-
-// person.flip();
-
-// .apply()  or .call()
 
 
 // const firstName = "erik";
@@ -107,50 +105,69 @@ const person = {
 // console.log(sentence2)
 
 
-// class Bear {
+class Bear {
 
-//     constructor(name, age) {
-//         // will run when you create an instance of it
+    constructor(name, age) {
+        // will run when you create an instance of it
 
-//         this.name = name;
-//         this.age = age;
-//     }
+        this.name = name;
+        this.age = age;
+    }
 
-//     walk() {
-//         console.log(`${this.name} Walk`)
-//     }
+    run() {
+        console.log(`${this.name} run`)
+    }
 
-//     climb() {
-//         console.log(`${this.name} climb`)
-//     }
-// }
+    walk() {
+        console.log(`${this.name} Walk`)
+    }
 
-// class PolarBear extends Bear {
-//     constructor(name, age) {
-//         super(name, age);
+    climb() {
+        console.log(`${this.name} climb`)
+    }
+}
 
+// extends is the keyword to "inherit" the parent class methods and properties
+// in this example PolarBear  will basically get all Bear's functionality
+class PolarBear extends Bear {
+    constructor(name, age) {
+        super(name, age); // execute parent Class constructor() with arguments
 
-//         console.log("after the Bear's logic")
-//     }
+        console.log("after the Bear's logic")
+    }
 
-//     swim() {
+    walk() {
+        super.walk(); // execute parent class walk method
+        // and in addition do some more stuff
 
-//         console.log(`${this.name} swim`)
-//     }
-// }
+        console.log("and stopping to rest here and there....")
+    }
+    // adding an extra method that the parent class doesn't have
+    swim() {
+        console.log(`${this.name} swim`)
+    }
 
-// const yogi = new Bear("Yogi", 55);
+    climb() {
+        // Fully override (don't call super.climb())
+        console.log(`${this.name} has failed to climb :(`)
+    }
+}
 
-// yogi.walk();
-// yogi.climb();
+const yogi = new Bear("Yogi", 55);
 
-// const smokey = new Bear("Smokey", 20);
-// smokey.walk();
-// smokey.climb();
+yogi.run();
+yogi.walk();
+yogi.climb();
 
-// const coke = new PolarBear("Coke", 544);
-// coke.walk();
-// coke.climb();
+const smokey = new Bear("Smokey", 20);
+smokey.walk();
+smokey.climb();
+// smokey.swim(); // will not work since smokey is an instance of Bear, not PolarBear so don't have access to swim method
+
+const coke = new PolarBear("Coke", 544);
+coke.walk();
+coke.climb();
+coke.swim();
 
 // Prototypal inheritance (old school of doing classes)
 // function Bear(n, a) {
@@ -268,37 +285,37 @@ const returnHome = () => {
 //   getData();
 
 
-function square(n) {
-    return n * n;
-}
+// function square(n) {
+//     return n * n;
+// }
 
-function cube(n) {
-    return n * n * n;
-}
+// function cube(n) {
+//     return n * n * n;
+// }
 
-function oddOrEven(n) {
+// function oddOrEven(n) {
 
-    if (n % 2 === 0) {
-        return "even"
-    }
+//     if (n % 2 === 0) {
+//         return "even"
+//     }
 
-    return "odd";
-}
+//     return "odd";
+// }
 
-console.log(oddOrEven(99))
+// console.log(oddOrEven(99))
 
-const x = 10;
+// const x = 10;
 
-console.log(square(10))
+// console.log(square(10))
 
 
-const nums = [1, 3, 5, 3, 6, 6, 5];
+// const nums = [1, 3, 5, 3, 6, 6, 5];
 
-console.log(nums);
+// console.log(nums);
 
-const results =  nums.map(oddOrEven);
+// const results =  nums.map(oddOrEven);
 
-console.log(results)
+// console.log(results)
 
 
 
