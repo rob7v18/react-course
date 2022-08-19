@@ -1,0 +1,25 @@
+
+
+.movie-card {
+  border: 1px solid red;
+ float: left;
+
+ width: 200px;
+ }
+
+ .movie-card__title {
+   border: 1px solid red;
+ }
+
+ .movie-card__type {
+   background-color: pink;
+   padding: 10px;
+   border-radius: 5px;
+   border: 1px solid red;
+ }
+
+ .movie-card__image {
+   max-width: 100%;
+
+   border: 1px solid red;
+ }
