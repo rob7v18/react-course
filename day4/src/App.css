@@ -23,3 +23,17 @@
 
    border: 1px solid red;
  }
+
+ .modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0, .8);
+ }
+
+ .modal {
+  background-color: white;
+  padding: 20px;
+  border: 4px solid green;
+  max-width: 600px;
+  margin: 0 auto;
+ }

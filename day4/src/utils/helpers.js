@@ -1,5 +1,5 @@
 // Sign up for an OMDb API key at http://www.omdbapi.com.
-const OMDB_KEY = "user your api key here";
+const OMDB_KEY =  process.env.REACT_APP_OMDB_API_KEY;
 
 const apiURL = `http://www.omdbapi.com/?apikey=${OMDB_KEY}&`;
 
